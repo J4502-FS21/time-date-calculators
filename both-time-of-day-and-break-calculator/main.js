@@ -18,10 +18,14 @@ var isItAMorPM;
 /*The values in hour of the day can be as low as 0 or as high as 23. But in the United States, we only use numbers 1 through 12 when talking about time. So we will use JavaScript to help us determine what the clockFriendlyHourOfDay is. */
 var clockFriendlyHourOfDay;
 
-if (specificHourOfTheDay > 13) {
+if (specificHourOfTheDay >= 12) {
   isItAMorPM = "p.m.";
-  /*We subtract 12 from the time because the U.S., most people are not familiar with considering times that are higher than 12. */
-  clockFriendlyHourOfDay = specificHourOfTheDay - 12;
+  if (specificHourOfTheDay > 12) {
+    /*We subtract 12 from the time because the U.S., most people are not familiar with considering times that are higher than 12. */
+    clockFriendlyHourOfDay = specificHourOfTheDay - 12;
+  } else {
+    clockFriendlyHourOfDay = specificHourOfTheDay;
+  }
 } else {
   isItAMorPM = "a.m.";
   /*In this case, we know the number is less than 13, so we have no need to subtract 12 from it. In that case, the clockFriendlyHourOfDay variable can be the same as the specificHourOfTheDay variable's value. */
